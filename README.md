@@ -3,11 +3,11 @@ http://brat.nlplab.org/
 BRAT requires you to configure usernames and passwords. You can specify these as environment variables when you run the container.
 
 You will also need to provide data and config files. The folloowing config files should be in /directory/on/host/bratconfig :
-*config.py
-*annotation.conf
-*kb_shortcuts.conf
-*tools.conf
-*visual.conf
+config.py  
+annotation.conf  
+kb_shortcuts.conf  
+tools.conf  
+visual.conf  
 
 On the host:
 
