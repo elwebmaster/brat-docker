@@ -24,8 +24,6 @@ RUN chmod g+rwx /bratconfig
 RUN chmod o-rwx /bratdata
 RUN chmod o-rwx /bratconfig
 RUN ln -s /bratdata /var/www/brat/brat-v1.3_Crunchy_Frog/data
-RUN ln -s /bratconfig  /var/www/brat/brat-v1.3_Crunchy_Frog/config
-
 
 ADD brat_install_wrapper.sh /usr/bin/brat_install_wrapper.sh
 RUN chmod +x /usr/bin/brat_install_wrapper.sh
@@ -34,8 +32,6 @@ RUN chmod +x /usr/bin/brat_install_wrapper.sh
 RUN chown -R www-data:www-data /var/www/brat/brat-v1.3_Crunchy_Frog/
 
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
-
-
 
 # Enable cgi
 RUN a2enmod cgi
