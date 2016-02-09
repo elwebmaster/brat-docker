@@ -10,11 +10,17 @@ mv /var/www/brat/brat-v1.3_Crunchy_Frog/annotation.conf /var/www/brat/brat-v1.3_
 mv /var/www/brat/brat-v1.3_Crunchy_Frog/kb_shortcuts.conf /var/www/brat/brat-v1.3_Crunchy_Frog/kb_shortcuts.conf.old
 mv /var/www/brat/brat-v1.3_Crunchy_Frog/tools.conf /var/www/brat/brat-v1.3_Crunchy_Frog/tools.conf.old
 mv /var/www/brat/brat-v1.3_Crunchy_Frog/visual.conf /var/www/brat/brat-v1.3_Crunchy_Frog/visual.conf.old
-cp /bratconfig/config.py /var/www/brat/brat-v1.3_Crunchy_Frog/config.py
-cp /bratconfig/annotation.conf /var/www/brat/brat-v1.3_Crunchy_Frog/annotation.conf
-cp /bratconfig/kb_shortcuts.conf /var/www/brat/brat-v1.3_Crunchy_Frog/kb_shortcuts.conf
-cp /bratconfig/tools.conf /var/www/brat/brat-v1.3_Crunchy_Frog/tools.conf
-cp /bratconfig/visual.conf /var/www/brat/brat-v1.3_Crunchy_Frog/visual.conf
+
+for file in config.py annotation.conf kb_shortcuts.conf tools.conf visual.conf
+do
+  if [[ ! -f $file ]]
+  then
+    cp /var/www/brat/brat-v1.3_Crunchy_Frog/$file.old /bratconfig/$file
+  fi
+  
+  ln -s /bratconfig/$file /var/www/brat/brat-v1.3_Crunchy_Frog/$file
+done
+
 chown www-data:www-data /var/www/brat/brat-v1.3_Crunchy_Frog/config.py
 chown www-data:www-data /var/www/brat/brat-v1.3_Crunchy_Frog/annotation.conf
 chown www-data:www-data /var/www/brat/brat-v1.3_Crunchy_Frog/kb_shortcuts.conf
