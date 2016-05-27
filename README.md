@@ -1,8 +1,8 @@
 Dockerized [brat](http://brat.nlplab.org/).
 
-### Installation
+## Installation
 
-Installation command:
+Enter the following on the command-line:
 
 ```
 docker run -d -p 80:80 -v /directory/on/host:/bratconfig -v /directory/on/host:/bratdata -e BRAT_USERNAME=brat -e BRAT_PASSWORD=brat -e BRAT_EMAIL=brat@example.com --name myContainer stefand/brat-docker
@@ -20,6 +20,8 @@ The `-v` option specifies directory mounts for the data and config folders (whic
 The environmental variables `BRAT_USERNAME=brat`, `BRAT_PASSWORD=brat`, and `BRAT_EMAIL=brat@example.com` are NOT used, and instead, the corresponding variables set in the config.py file from `/bratconfig` are used.
 
 The `--name` option is optional and if not specified, Docker auto-generates one.
+
+In case you run into permission issues w.r.t. to the mounted folders inside the Docker container, you may need to map users from the host system to the Docker container. This usually requires augmenting the Dockerfile according to the following [gist](https://gist.github.com/hardik-vala/3859bb8b48c85f7fffb6307030a15b29).
 
 
 
